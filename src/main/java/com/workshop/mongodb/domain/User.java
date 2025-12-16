@@ -3,10 +3,19 @@ package com.workshop.mongodb.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 // Quick disclaimer: serializable is implemented so we can transfer data trough network 
+
+// If you don't put anything on the '@Document' collection name, 
+// Spring will get the class name and align the collection to the lowercase name of the class
+
+@Document(collection="user")
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private String id;
 	private String name;
 	private String email;
